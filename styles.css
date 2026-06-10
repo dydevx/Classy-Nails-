@@ -542,22 +542,31 @@ h3 {
 }
 
 .studio-strip {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  padding-inline: max(20px, calc((100% - var(--container)) / 2));
-  background: var(--ink);
-  color: var(--porcelain);
+  gap: 16px;
+  padding: 28px max(20px, calc((100% - var(--container)) / 2));
+  border-bottom: 1px solid rgba(42, 23, 19, 0.12);
+  background:
+    linear-gradient(90deg, rgba(255, 250, 246, 0.92), rgba(241, 222, 213, 0.68)),
+    #f4e2d4;
+  color: var(--ink);
 }
 
 .studio-strip div {
   position: relative;
-  min-height: 112px;
+  min-height: 132px;
   display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
   align-content: center;
-  gap: 8px;
-  padding: 22px 24px;
-  background: var(--charcoal);
+  align-items: start;
+  gap: 10px;
+  padding: 24px 26px;
+  border: 1px solid rgba(42, 23, 19, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 250, 246, 0.7);
+  box-shadow: 0 16px 42px rgba(42, 23, 19, 0.06);
   overflow: hidden;
   animation: stripRise 720ms var(--ease-out) var(--reveal-delay, 0ms) backwards;
 }
@@ -584,14 +593,35 @@ h3 {
 }
 
 .studio-strip span {
-  color: var(--brass);
+  grid-column: 2;
+  color: var(--botanical);
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
+.studio-strip svg {
+  grid-row: 1 / 3;
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  border: 1px solid rgba(42, 23, 19, 0.12);
+  border-radius: 50%;
+  background: var(--porcelain);
+  color: var(--botanical);
+  box-shadow: 0 10px 24px rgba(42, 23, 19, 0.07);
+  stroke-width: 1.8;
+}
+
 .studio-strip strong {
+  grid-column: 2;
   font-size: 1rem;
+}
+
+.studio-strip .hours-list {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.52;
 }
 
 .section {
@@ -813,21 +843,109 @@ h3 {
   gap: 12px;
 }
 
+.pedicure-section {
+  background:
+    linear-gradient(180deg, #fff7ef 0%, #f6e5d8 100%);
+  overflow: hidden;
+}
+
+.pedicure-shell {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.pedicure-photo {
+  position: relative;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(42, 23, 19, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 26px 70px rgba(42, 23, 19, 0.14);
+}
+
+.pedicure-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(42, 23, 19, 0.18));
+  pointer-events: none;
+}
+
+.pedicure-photo img {
+  width: 100%;
+  height: clamp(320px, 29vw, 390px);
+  object-fit: cover;
+  object-position: 48% 38%;
+}
+
+.pedicure-copy {
+  padding: 8px 0;
+}
+
+.pedicure-copy h2 {
+  max-width: 480px;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+.pedicure-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pedicure-steps li {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+  padding: 14px 18px;
+  border: 1px solid rgba(42, 23, 19, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 250, 246, 0.74);
+  box-shadow: 0 12px 32px rgba(42, 23, 19, 0.06);
+}
+
+.pedicure-steps span {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--porcelain);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.pedicure-steps strong {
+  color: var(--ink);
+  font-size: 1.12rem;
+}
+
 .gallery-section {
   background:
-    radial-gradient(circle at 16% 12%, rgba(189, 124, 115, 0.16), transparent 24%),
-    radial-gradient(circle at 86% 18%, rgba(185, 139, 95, 0.16), transparent 26%),
-    linear-gradient(180deg, #2a1713 0%, #1b100e 100%);
-  color: var(--porcelain);
+    linear-gradient(90deg, rgba(255, 250, 246, 0.9), rgba(241, 222, 213, 0.7)),
+    #f4e2d4;
+  color: var(--ink);
   overflow: hidden;
 }
 
 .lookbook-heading .eyebrow {
-  color: var(--brass);
+  color: var(--botanical);
 }
 
 .lookbook-heading h2 {
-  color: var(--porcelain);
+  color: var(--ink);
 }
 
 .lookbook-grid {
@@ -844,10 +962,10 @@ h3 {
   min-height: 0;
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--line-dark);
+  border: 1px solid rgba(42, 23, 19, 0.14);
   border-radius: 8px;
-  background: var(--charcoal);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+  background: var(--porcelain);
+  box-shadow: 0 18px 44px rgba(42, 23, 19, 0.12);
   isolation: isolate;
   aspect-ratio: 4 / 5;
   transform-origin: center bottom;
@@ -864,16 +982,16 @@ h3 {
 }
 
 .lookbook-item::before {
-  background: linear-gradient(108deg, transparent 0 42%, rgba(255, 250, 246, 0.28) 48%, transparent 54%);
+  background: linear-gradient(108deg, transparent 0 42%, rgba(255, 250, 246, 0.36) 48%, transparent 54%);
   transform: translateX(-130%);
   transition: transform 720ms var(--ease-out);
 }
 
 .lookbook-item::after {
   background:
-    linear-gradient(180deg, transparent 62%, rgba(42, 23, 19, 0.36) 100%),
-    linear-gradient(90deg, rgba(255, 250, 246, 0.09), transparent 28%, transparent 72%, rgba(255, 250, 246, 0.08));
-  opacity: 0.7;
+    linear-gradient(180deg, transparent 68%, rgba(42, 23, 19, 0.18) 100%),
+    linear-gradient(90deg, rgba(255, 250, 246, 0.12), transparent 28%, transparent 72%, rgba(255, 250, 246, 0.1));
+  opacity: 0.58;
   transition: opacity 260ms ease;
 }
 
@@ -1056,11 +1174,11 @@ h3 {
 .site-footer {
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 250, 246, 0.1);
+  border-top: 1px solid rgba(42, 23, 19, 0.12);
   background:
-    linear-gradient(90deg, rgba(185, 139, 95, 0.18), transparent 34%, rgba(189, 124, 115, 0.1) 100%),
-    linear-gradient(135deg, #2a1713 0%, #3a2822 56%, #241713 100%);
-  color: rgba(255, 250, 246, 0.78);
+    linear-gradient(90deg, rgba(255, 250, 246, 0.9), rgba(241, 222, 213, 0.72)),
+    #f4e2d4;
+  color: var(--charcoal);
 }
 
 .site-footer::before {
@@ -1068,7 +1186,7 @@ h3 {
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(185, 139, 95, 0.86), transparent);
+  background: linear-gradient(90deg, transparent, rgba(185, 139, 95, 0.64), transparent);
 }
 
 .footer-shell {
@@ -1077,9 +1195,9 @@ h3 {
   width: min(var(--container), calc(100% - 40px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.2fr);
-  gap: 54px;
-  padding: 58px 0 36px;
+  grid-template-columns: minmax(280px, 0.66fr) minmax(0, 1.34fr);
+  gap: 44px;
+  padding: 52px 0 34px;
 }
 
 .footer-brand {
@@ -1097,16 +1215,16 @@ h3 {
   height: 66px;
   flex: 0 0 auto;
   padding: 3px;
-  border: 1px solid rgba(255, 250, 246, 0.58);
+  border: 1px solid rgba(42, 23, 19, 0.14);
   border-radius: 50%;
   background: var(--porcelain);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 16px 34px rgba(42, 23, 19, 0.1);
   object-fit: cover;
 }
 
 .footer-logo strong {
   display: block;
-  color: var(--porcelain);
+  color: var(--ink);
   font-size: 1.52rem;
   line-height: 1;
 }
@@ -1114,7 +1232,7 @@ h3 {
 .footer-logo small {
   display: block;
   margin-top: 6px;
-  color: var(--brass);
+  color: var(--botanical);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -1124,7 +1242,7 @@ h3 {
 .footer-brand p {
   max-width: 410px;
   margin: 22px 0 0;
-  color: rgba(255, 250, 246, 0.72);
+  color: var(--ash);
   font-size: 1rem;
 }
 
@@ -1142,10 +1260,10 @@ h3 {
   min-height: 46px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 250, 246, 0.2);
+  border: 1px solid rgba(42, 23, 19, 0.14);
   border-radius: 2px;
-  background: rgba(255, 250, 246, 0.07);
-  color: var(--porcelain);
+  background: rgba(255, 250, 246, 0.7);
+  color: var(--ink);
   transition: transform 220ms var(--ease-out), background 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
@@ -1186,20 +1304,21 @@ h3 {
 
 .footer-details {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(238px, 1.2fr) minmax(0, 0.92fr);
+  gap: 14px;
 }
 
 .footer-detail {
   position: relative;
-  min-height: 176px;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 12px;
   align-content: start;
-  padding: 22px 18px;
-  border: 1px solid rgba(255, 250, 246, 0.12);
-  background: rgba(255, 250, 246, 0.045);
+  padding: 20px 18px;
+  border: 1px solid rgba(42, 23, 19, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 250, 246, 0.58);
 }
 
 .footer-detail::before {
@@ -1220,7 +1339,7 @@ h3 {
 .footer-detail span {
   display: block;
   margin-bottom: 8px;
-  color: var(--porcelain);
+  color: var(--ink);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1229,7 +1348,7 @@ h3 {
 .footer-detail address,
 .footer-detail p {
   margin: 0;
-  color: rgba(255, 250, 246, 0.7);
+  color: var(--ash);
   font-style: normal;
 }
 
@@ -1243,12 +1362,12 @@ h3 {
   justify-content: space-between;
   gap: 18px;
   padding: 20px 0 24px;
-  border-top: 1px solid rgba(255, 250, 246, 0.12);
+  border-top: 1px solid rgba(42, 23, 19, 0.12);
 }
 
 .footer-bottom p {
   margin: 0;
-  color: rgba(255, 250, 246, 0.6);
+  color: var(--ash);
   font-size: 0.9rem;
 }
 
@@ -1256,7 +1375,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--porcelain);
+  color: var(--ink);
   font-size: 0.9rem;
   font-weight: 700;
   transition: color 180ms ease, transform 220ms var(--ease-out);
@@ -1515,6 +1634,18 @@ h3 {
     grid-template-columns: 1fr;
     gap: 34px;
   }
+
+  .pedicure-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .pedicure-photo {
+    order: 2;
+  }
+
+  .pedicure-copy {
+    order: 1;
+  }
 }
 
 @media (max-width: 820px) {
@@ -1618,6 +1749,7 @@ h3 {
   .lookbook-heading,
   .service-layout,
   .booking-band,
+  .pedicure-shell,
   .lookbook-grid,
   .contact-layout {
     width: min(var(--container), calc(100% - 28px));
@@ -1646,6 +1778,11 @@ h3 {
 
   .booking-actions {
     justify-content: flex-start;
+  }
+
+  .pedicure-photo img {
+    height: 380px;
+    object-position: 47% 38%;
   }
 
   .lookbook-grid {
@@ -1753,6 +1890,26 @@ h3 {
     font-size: 1.7rem;
   }
 
+  .pedicure-shell {
+    gap: 26px;
+  }
+
+  .pedicure-photo img {
+    height: 220px;
+    object-position: 43% 36%;
+  }
+
+  .pedicure-steps li {
+    grid-template-columns: 46px minmax(0, 1fr);
+    min-height: 62px;
+    padding: 12px 14px;
+  }
+
+  .pedicure-steps span {
+    width: 36px;
+    height: 36px;
+  }
+
   .lookbook-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1795,7 +1952,7 @@ h3 {
 
   .footer-actions {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 46px;
+    grid-template-columns: minmax(0, 1fr) 46px 46px;
     width: 100%;
   }
 
