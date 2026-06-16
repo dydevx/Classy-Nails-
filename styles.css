@@ -815,6 +815,15 @@ h3 {
   transition: transform 360ms var(--ease-out), filter 260ms ease;
 }
 
+.menu-group:nth-child(5) .menu-photo img {
+  object-position: center;
+  transform: scale(1);
+}
+
+.menu-group:nth-child(5) .menu-photo {
+  aspect-ratio: 4 / 5;
+}
+
 .menu-group:hover .menu-photo img {
   transform: scale(1.08);
   filter: saturate(1.08) contrast(1.02);
