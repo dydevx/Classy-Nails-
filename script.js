@@ -4,6 +4,8 @@ const navToggle = document.querySelector(".nav-toggle");
 const bookingPlaceholder = document.querySelector(".booking-placeholder");
 const bookingToast = document.querySelector("#bookingToast");
 const hero = document.querySelector(".hero");
+const serviceTabs = document.querySelectorAll("[data-service-tab]");
+const serviceCards = document.querySelectorAll("[data-service-category]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const refreshIcons = () => {
@@ -52,6 +54,24 @@ bookingPlaceholder.addEventListener("click", (event) => {
   toastTimer = window.setTimeout(() => {
     bookingToast.classList.remove("is-visible");
   }, 3600);
+});
+
+const setActiveServiceCategory = (category) => {
+  serviceTabs.forEach((tab) => {
+    const isActive = tab.dataset.serviceTab === category;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  serviceCards.forEach((card) => {
+    card.classList.toggle("is-visible", card.dataset.serviceCategory === category);
+  });
+};
+
+serviceTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    setActiveServiceCategory(tab.dataset.serviceTab);
+  });
 });
 
 const revealItems = document.querySelectorAll(".reveal");
